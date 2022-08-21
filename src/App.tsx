@@ -1,17 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Pool from './components/Pool';
-import { Drawer } from '@mui/material';
-import Button from "@mui/material/Button";
+import { useState } from "react"
 import Bar from './components/Bar';
 
+
+
 function App() {
-  
+  const [tasks, SetTasks] = useState([]);
   return (
     <div className="App">
-      <h1> To-Do</h1>
-      
+      <h1> Don't Say Lazy</h1>
       <Bar/>
       <Pool/>
     </div>

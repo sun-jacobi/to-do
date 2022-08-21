@@ -1,26 +1,16 @@
 import { useState } from "react"
-import Task from "./Task"
+import Item from "./Item"
 import Button from "@mui/material/Button";
 
-
-
-interface Task {
-    name : string;
-    time?: Date;
-    //done : boolean;
-}
+import { useAppSelector, useAppDispatch } from '../app/hooks'
+import {addTask} from '../app/taskSlice';
+import List from '@mui/material/List';
 
 export default function Pool() {
-    const [tasks, setTask] = useState<Task[]>([]);
-    return <>
-    <Button onClick={() => {
-        
-        setTask(tasks.concat([{name : "Task"}]));
-    }}> 
-    Add
-    </Button> 
-    {tasks.map(task => <Task name = {task.name}/>)}
-    </>
-
+    const taskList = useAppSelector(state => state);
+    const dispatch = useAppDispatch();
+    return (<List>
+    {taskList.map((item) => <Item item = {item}></Item>)}
+    </List>);
 }
 
